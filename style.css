@@ -1,48 +1,118 @@
 *{
-    box-sizing: border-box;
     margin:0;
-    padding: 0;
-}
-@media screen {
-    .navbar{
-        width: 100%;
-    }
+    box-sizing: border-box;
 }
 body{
-    
-    font-size: 16px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
+    padding: 90px 20px 0;
 }
-a{
-    text-decoration: none;
-}
-.navbar{
-    width: 100%;
-    height: 100px;
-    background-color:aliceblue ;
+.header{
+    background-color: rgb(167, 137, 141);
     position: fixed;
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    padding: 20px 0;
+    width: 100%;
     top:0;
+    left: 0;
 }
-ul{
-    list-style: none;
-}
-.navbar ul{
+.nav{
     display: flex;
+    justify-content: space-between;
+    max-width: 992px;
+    margin:0 auto;
+}
+.nav-link{
+    color:white;
+    text-decoration: none;
+}.logo{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 80px;
+}
+.nav-menu{
+    display: flex;
+    margin-right: 40px;
     list-style: none;
 }
-.navbar ul li{
-    padding: 10px;
+.nav-menu-item{
+    font-size: 18px;
+    margin:0 10px;
+    line-height: 80px;
+    text-transform: uppercase;
+    width: max-content;/*evita que se pierda palabras si un enlace tiene más de una (sobre mí)*/
+}
+.nav-menu-link{
+    padding: 8px 12px;
+    border-radius: 3px;
+}
+.nav-menu-link:hover,
+.nav-menu-link_active{
+  color: #034574;
+  background-color: aliceblue;
+  transition: 0.5s;
+}
+.nav-toggle{
+    color:white;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0 20px;
+    line-height: 60px;
+    display: none;/*esto hace que en web de escritorio no se vea este icono, solo en móviles*/
+    cursor: pointer;
+}
+@media (max-width:768px){
+    body{
+        padding-top: 70px;
+    }
+    .header{
+        height: 60px;
+    }
+   .logo{
+        font-size: 25px;
+        font-weight: bold;
+        padding: 0 20px;
+        line-height: 60px;
+    }
+    .nav-menu{
+        flex-direction: column;
+        align-items: center;
+        margin:0;
+        background-color: #453147;
+        position: fixed;
+        left: 0;
+        top:60px;
+        width: 100%;
+        padding: 20px 0;/*el navegador aplica un padding a la izq de forma automatica cuando detecta que es un ul
+                        para evitarlo se pone el padding a 0*/
+        height: calc(100% - 60px);/*aplicamos la altura haciendo un cálculo, en el que ponemos el 100% del largo de la página menos 
+                                    los 60px del logo*/
+        overflow-y:auto ;/*aplica un scroll en el eje de forma automatica cuando sea necesario*/
+        left: 100%;/*esto hace que la barra de menú no aparezca en la pag ya que esta totalmente desplazada
+                    cuando el boton de barra de navegación esté activa (.nav-menu-visible) se sobreescribe esto con left:0 para que aparezca*/
+        transition: left 0.3s;
+    }
+    .nav-menu-item{
+        
+        line-height: 70px;
+    }
     
+    .nav-menu-link:hover,
+    .nav-menu-link_active{
+      color:rgb(119, 88, 92);
+      background: none;
+    }
+    .nav-toggle{
+        display: block;
+    }
+    .nav-menu-visible{
+        left: 0;
+    }
 }
-.navbar img{
-    margin-left: 10px;
-    width: 60px;
-    height: 80px;
-}
+
+
+
+
+
 .container{   
     display: grid;
     grid-template-columns: 1fr;
@@ -62,8 +132,8 @@ ul{
     display: inline-block; /*centra horizontalmente la imágen en el div*/
 }
 .personal img{
-    width: 300px;
-    height: 300px;
+    width: 60%;
+    height: 60%;
     border-radius: 50%;
     
 }
@@ -75,10 +145,18 @@ ul{
 }
 .enlaces{
     margin-top: 40px;
-    color: darkmagenta;
+    color: rgb(119, 88, 92);
+    font-size: 20px;
+}
+ul{
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
 }
 .enlaces ul li{
     margin-top: 20px;
     padding: 15px;
-    background-color: lightpink;
+    background-color: rgb(167, 137, 141);
+    text-decoration: none;
+    
 }
